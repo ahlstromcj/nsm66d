@@ -1,0 +1,70 @@
+#if ! defined NSM66_CONFIG_H
+#define NSM66_CONFIG_H
+
+/*
+ *  This file is part of nsm66.
+ *
+ *  nsm66 is free software; you can redistribute it and/or modify it under the
+ *  terms of the GNU General Public License as published by the Free Software
+ *  Foundation; either version 2 of the License, or (at your option) any later
+ *  version.
+ *
+ *  nsm66 is distributed in the hope that it will be useful, but WITHOUT ANY
+ *  WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+ *  FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+ *  details.
+ *
+ *  You should have received a copy of the GNU General Public License along
+ *  with nsm66; if not, write to the Free Software Foundation, Inc., 59 Temple
+ *  Place, Suite 330, Boston, MA  02111-1307  USA
+ */
+
+/**
+ * \file          nsm66-config.h (nsm66-config.h.in)
+ *
+ *      This header file provide "HAVE" definitions based on detected C/C++
+ *      system header files.
+ *
+ * \library       nsm66
+ * \author        Chris Ahlstrom
+ * \date          2025-01-29
+ * \updates       2025-01-29
+ * \license       GNU GPL v2 or above
+ *
+ *  This file is used mainly for system files and specific build options.  The
+ *  main build options are detected at build time via the platform_macros.h
+ *  module.
+ *
+ *  For information on this file, see
+ *
+ *      https://mesonbuild.com/Configuration.html
+ *
+ *  These #defines will define the macro value as True or False.
+ *  The proper way to test the macro is:
+ *
+ *      #if RTL66_HAVE_SEMAPHORE_H
+ *
+ *  We had an error on Arch Linux with "True" apparently not being detected as
+ *  a boolean, so we add setting up True/False below. We should perhaps
+ *  update this file to better match the descriptions at the URL above.
+ */
+
+#if ! defined True
+#define True    1
+#endif
+
+#if ! defined False
+#define False   0
+#endif
+
+#define NSM66_HAVE_LIMITS_H           @limits_h@
+#define NSM66_HAVE_LINUX_LIMITS_H     @limits_h@
+#define NSM66_HAVE_LO_H               @lo_h@
+
+#endif          // NSM66_CONFIG_H
+
+/*
+ * nsm66-config.h (nsm66-config.h.in)
+ *
+ * vim: sw=4 ts=4 wm=4 et ft=c
+ */

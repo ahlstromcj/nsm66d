@@ -1,0 +1,156 @@
+lo_server_add_method() Calls made in "New Session Manager"
+Chris Ahlstrom
+2025-03-30 to 2025-04-07
+
+Our implementations are mark with one or more letters:
+L for lowrapper, E for endpoint, N for nsmcontroller, A for
+our replacement application, B for nsmbase, S for signal.
+
+lo_server_add_method
+
+                    path                        typespec    lo_method_handler   user_data
+
+                    If NULL, it matches all paths
+
+Signal:
+
+                    _path                       NULL
+                    new_path                    NULL        osc_sig_handler     this
+
+    where path  newpath == ?
+
+Endpoint (used by nsmd and nsm-legacy-gui, nsmcontroller):
+
+ E      sighello        "/signal/hello"             "ss"        osc_sig_hello       this  ""
+ E      sigconnect      "/signal/connect"           "ss"        osc_sig_connect     this  ""
+ E      sigdisconnect   "/signal/disconnect"        "ss"        osc_sig_disconnect  this  ""
+ ES     sigrenamed      "/signal/renamed"           "ss"        osc_sig_renamed     this  ""
+ E      sigremoved      "/signal/removed"           "s"         osc_sig_removed     this  ""
+ E      sigcreated      "/signal/created"           "ssfff"     osc_sig_created     this  ""
+ E      siglist         "/signal/list"              NULL  *     osc_signal_lister   this  ""
+ E      sigreply        "/reply"                    NULL  *     osc_reply           this  ""
+ E      generic         NULL  *                     NULL  *     osc_generic         this  ""
+
+        * NULL  we use "";  maybe we need a code like "-"?
+ 
+jackpatch:
+
+ A      clisave         "/nsm/client/save"          ""          osc_save            NULL
+ A      cliopen         "/nsm/client/open"          "sss"       osc_open            NULL
+ LBA    error           "/error"                    "sis"       osc_announce_error  NULL
+ LA     replyex         "/reply"                    "ssss"      osc_announce_reply  NULL
+
+nsmd:
+
+ A      srvannounce     "/nsm/server/announce"      "sssiii"    ( announce )        NULL  "client..."
+ LB     reply           "/reply"                    "ss"        ( reply )           NULL  "err_code msg"
+ LB     error           "/error"                    "sis"       ( error )           NULL  "err_code msg"
+ A      cliprogress     "/nsm/client/progress"      "f"         ( progress )        NULL  "progress"
+ A      clidirty        "/nsm/client/is_dirty"      ""          ( is_dirty )        NULL  "dirtiness"   (flag)
+ A      cliclean        "/nsm/client/is_clean"      ""          ( is_clean )        NULL  "dirtiness"   (flag)
+ A      climessage      "/nsm/client/message"       "is"        ( message )         NULL  "message"
+ A      guihidden       "/nsm/client/gui_is_hidden" ""          ( gui_is_hidden )   NULL  "message"     (flag)
+ A      guishown        "/nsm/client/gui_is_shown"  ""          ( gui_is_shown )    NULL  "message"     (flag)
+ A      clilabel        "/nsm/client/label"         "s"         ( label )           NULL  "message"
+ NA     guiannounce     "/nsm/gui/gui_announce"     "" ("s"?)   ( gui_announce )    NULL  ""
+ A      guistop         "/nsm/gui/client/stop"      "s"         ( stop )            NULL  "client_id"
+ A      guiremove       "/nsm/gui/client/remove"    "s"         ( remove )          NULL  "client_id"
+ A      guiresume       "/nsm/gui/client/resume"    "s"         ( resume )          NULL  "client_id"
+ A      guisave         "/nsm/gui/client/save"      "s"         ( client_save )     NULL  "client_id"
+ A      guishow         "/nsm/gui/client/show_optional_gui"  "s"  ( show_... )      NULL  "client_id"
+ A      guihide         "/nsm/gui/client/hide_optional_gui"  "s"  ( hide_... )      NULL  "client_id"
+ A      oscping         "/osc/ping"                 ""          ( ping )            NULL  ""
+ N      srvbroadcast    "/nsm/server/broadcast"     NULL  *     ( broadcast )       NULL  ""
+ A      srvduplicate    "/nsm/server/duplicate"     "s"         ( duplicate )       NULL  ""
+ A      srvabort        "/nsm/server/abort"         ""          ( abort )           NULL  ""
+ A      srvlist         "/nsm/server/list"          ""          ( list )            NULL  ""
+ A      srvadd          "/nsm/server/add"           "s"         ( add )             NULL  "exe..."
+ A      srvnew          "/nsm/server/new"           "s"         ( new )             NULL  "name"
+ A      srvsave         "/nsm/server/save"          ""          ( save )            NULL  ""            (flag)
+ A      srvopen         "/nsm/server/open"          "s"         ( open )            NULL  "name"
+ A      srvclose        "/nsm/server/close"         ""          ( close )           NULL  ""            (flag)
+ A      srvquit         "/nsm/server/quit"          ""          ( quit )            NULL  ""            (flag)
+ A      null            NULL  *                     NULL  *     ( null )            NULL  ""
+
+nsm-legacy-gui:
+
+ LB     error           "/error"                    "sis"       handler             osc  "msg"
+ LB     reply           "/reply"                    "ss"        handler             osc  "msg"
+ N      srvreply        "/reply"                    "s"         handler             osc  ""             (RENAME!)
+ N      srvbroadcast    "/nsm/server/broadcast"     NULL  *     broadcast_handler   osc  "msg"
+ N      guisrvannounce  "/nsm/gui/server_announce"  "s"         handler             osc  "msg"          (missing!)
+ N      srvmessage      "/nsm/gui/server/message"   "s"         handler             osc  "msg"
+ N      guiannounce     "/nsm/gui/gui_announce"     "s"         handler             osc  "msg"
+ N      session         "/nsm/gui/session/session"  "s"         handler             osc  "path ..."
+ N      guiname         "/nsm/gui/session/name"     "ss"        handler             osc  "path ..."
+ N      guinew          "/nsm/gui/client/new"       "ss"        handler             osc  "path ..."
+ N      guistatus       "/nsm/gui/client/status"    "ss"        handler             osc  "path ..."
+ N      guiswitch       "/nsm/gui/client/switch"    "ss"        handler             osc  "path ..."
+ N      guiprogress     "/nsm/gui/client/progress"  "sf"        handler             osc  "path ..."
+ N      guidirty        "/nsm/gui/client/dirty"     "si"        handler             osc  "path ..."
+ N      guioption       "/nsm/gui/client/has_optional_gui"  "s"  handler            osc  "path ..."
+ N      guivisible      "/nsm/gui/client/gui_visible"      "si"  handler            osc  "path ..."
+ N      guilabel        "/nsm/gui/client/label"            "ss"  handler            osc  "path ..."
+
+where osc == pointer to an osc::endpoint object
+
+nsm-proxy:
+
+ A      clisave         "/nsm/client/save"          ""          osc_save            NULL                (flag)
+ A      cliopen         "/nsm/client/open"          "sss"       osc_open            NULL
+ A      clishow         "/nsm/client/show_optional_gui"  ""     osc_show_gui        NULL                (flag)
+ A      clihide         "/nsm/client/hide_optional_gui"  ""     osc_hide_gui        NULL   ("s"?)       (flag?)
+ LBA    error           "/error"                    "sis"       osc_announce_error  NULL
+ LA     replyex         "/reply"                    "ssss"      osc_announce_reply  NULL
+ A      proxylabel      "/nsm/proxy/label"          "s"         osc_label           NULL
+ A      proxysave       "/nsm/proxy/save_signal"    "i"         osc_save_signal     NULL
+ A      proxystop       "/nsm/proxy/stop_signal"    "i"         osc_stop_signal     NULL
+ A      proxykill       "/nsm/proxy/kill"           ""          osc_kill            NULL                (flag)
+ A      proxystart      "/nsm/proxy/start"          "sss"       osc_start           NULL
+ A      proxyupdate     "/nsm/proxy/update"         ""          osc_update          NULL                (flag)
+
+nsm-proxy-gui:
+
+        proxyexe        "/nsm/proxy/executable"     "s"         osc_update          NULL
+        proxyargs       "/nsm/proxy/arguments"      "s"         osc_update          NULL
+        proxycfgfile    "/nsm/proxy/config_file"    "s"         osc_update          NULL
+        proxylabel      "/nsm/proxy/label"          "s"         osc_update          NULL
+        proxysave       "/nsm/proxy/save_signal"    "i"         osc_update          NULL
+        proxystop       "/nsm/proxy/stop_signal"    "i"         osc_update          NULL
+        proxyerror      "/nsm/proxy/client_error"   "s"         osc_update          NULL
+
+seq66:
+
+        TODO
+
+Additions needed based on NSM API documentation:
+
+        cliloaded       "/nsm/client/session_is_loaded" ""      ( optional )        NULL  "message"     (flag)
+
+    
+Generic process from NSM documentation:
+
+     1. Send tag::srvannounce with app-name, capabilities, exe-name,
+        NSM version major, minor, and PID. [However, note that nsm-legacy-gui
+        just sends the tag, not the rest!!!]
+     2. Server response is tag::replyex with tag::srvannounce message,
+        welcome message, name of session manager, and server capabilities.
+            --or--
+     2. Error response tag::error with tag::srvannounce message, error code, and
+        error message.
+     3. Control message protocol:
+        a.  Client must accept the message.
+        b.  Client must reply with a tag::reply or tag::error message with the
+            path set to the value of the control message.
+     4. Server sends tag::open with project path, display name, and client ID.
+     5. Client opens the project or creates a new one there.
+     6. Client registers with JACK using the client name? ID?
+     7. Client sends the reply or a tag::cliprogress message with fraction
+        (0.0 to 1.0) follow by tag::reply.
+     8. Server sends tag::clisave and client replies with tag::reply
+        or tag::error.
+
+    10. Quit is implemented using SIGTERM and close must be done immediately.
+
+
+# vim: ft=sh nowrap

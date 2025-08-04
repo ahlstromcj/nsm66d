@@ -1,0 +1,25 @@
+#----------------------------------------------------------------------------
+#
+# Nsm66 Library Wrapper
+# Chris Ahlstrom
+# 2025-01-28 to 2025-01-28
+#
+#   Nsm66 wrapper for GitHub repository
+#
+#----------------------------------------------------------------------------
+
+[wrap-git]
+
+url = https://github.com/ahlstromcj/nsm66.git
+revision = head
+depth = 1
+
+[provide]
+
+#----------------------------------------------------------------------------
+# This dependency is declared in nsm66/meson.build.
+#----------------------------------------------------------------------------
+
+libnsm66_library = libnsm66_library_dep
+
+# vim: ft=dosini

@@ -1,0 +1,132 @@
+
+master % ./build/src/nsmctl/nsmctl-0.1 -l -p
+[nsmctl] Run-time/lock directory: /run/user/1000/nsm/d
+[nsmctl] File: /run/user/1000/nsm/d/118733
+[nsmctl] File: /run/user/1000/nsm/d/117842
+[nsmctl] Attempting NSM connection: osc.udp://mlstrycoo:18214/
+[nsmctl] Creating OSC server
+[nsmctl] OSC URL: osc.udp://mlstrycoo:15058/
+[nsmctl] Pinging...
+[nsmctl] OSC Thread running
+[nsmctl] New client: ID nQPEJ, name: nsm-data
+[nsmctl] Message '/nsm/gui/client/status' from unknown client 'nQPEJ'
+[nsmctl] New client: ID nQPEJ, name: Data-Storage
+[nsmctl] New client: ID nLWNW, name: jackpatch
+[nsmctl] Message '/nsm/gui/client/status' from unknown client 'nLWNW'
+[nsmctl] New client: ID nLWNW, name: JACKPatch
+[nsmctl] New client: ID nLMTD, name: qsynth
+[nsmctl] Message '/nsm/gui/client/status' from unknown client 'nLMTD'
+[nsmctl] New client: ID nPSLM, name: qseq66
+[nsmctl] Message '/nsm/gui/client/status' from unknown client 'nPSLM'
+[nsmctl] Message '/nsm/gui/client/has_optional_gui' from unknown client 'nPSLM'
+[nsmctl] New client: ID nPSLM, name: seq66
+[nsmctl] New client: ID nDVTC, name: qjackctl
+[nsmctl] Message '/nsm/gui/client/status' from unknown client 'nDVTC'
+[nsmctl] Received ping response: 1743015675
+[nsmctl] Received ping response: 1743015675
+[nsmctl] 15:01:16 Server responds
+[nsmctl] Received ping response: 1743015676
+[nsmctl] 15:01:17 Server responds
+[nsmctl] Received ping response: 1743015677
+[nsmctl] Telling server(s) to quit
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
+[nsmd] ../src/nsmd.cpp:2513 announce_gui():
+    A GUI announced to us from the URL osc.udp://127.0.0.1:13671/
+[nsmd] ../src/nsmd.cpp:2544 announce_gui():
+    Informing GUI about 5 already running clients
+[nsmd] ../src/nsmd.cpp:2561 announce_gui():
+    Informing GUI about running session name: 2025-01-26 with relative path /2025-01-26
+[nsmd] ../src/nsmd.cpp:2565 announce_gui():
+    Registration with GUI complete
+[nsmd] ../src/nsmd.cpp:2513 announce_gui():
+    A GUI announced to us from the URL osc.udp://127.0.0.1:13922/
+[nsmd] ../src/nsmd.cpp:2544 announce_gui():
+    Informing GUI about 5 already running clients
+[nsmd] ../src/nsmd.cpp:2561 announce_gui():
+    Informing GUI about running session name: 2025-01-26 with relative path /2025-01-26
+[nsmd] ../src/nsmd.cpp:2565 announce_gui():
+    Registration with GUI complete
+[nsmd] ../src/nsmd.cpp:2513 announce_gui():
+    A GUI announced to us from the URL osc.udp://127.0.0.1:14444/
+[nsmd] ../src/nsmd.cpp:2544 announce_gui():
+    Informing GUI about 5 already running clients
+[nsmd] ../src/nsmd.cpp:2561 announce_gui():
+    Informing GUI about running session name: 2025-01-26 with relative path /2025-01-26
+[nsmd] ../src/nsmd.cpp:2565 announce_gui():
+    Registration with GUI complete
+[nsmd] ../src/nsmd.cpp:1257 command_client_to_quit():
+    Commanding Data-Storage.nQPEJ to quit
+[nsmd] ../src/nsmd.cpp:1257 command_client_to_quit():
+    Commanding JACKPatch.nLWNW to quit
+[nsmd] ../src/nsmd.cpp:1257 command_client_to_quit():
+    Commanding qsynth.nLMTD to quit
+[nsmd] ../src/nsmd.cpp:1257 command_client_to_quit():
+    Commanding seq66.nPSLM to quit
+[jackpatch] Handle signal 15
+Signal caught: Terminated
+[nsmd] ../src/nsmd.cpp:1257 command_client_to_quit():
+    Commanding qjackctl.nDVTC to quit
+[nsmd] ../src/nsmd.cpp:1161 wait_for_killed_clients_to_die():
+    Waiting 30 seconds for killed clients to die.
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive():
+    Waiting for Data-Storage.nQPEJ
+[seq66] App marked for close...
+[seq66] Close event with NSM
+[jackpatch] Closing jack client
+JackTemporaryException : now quits...
+Jack main caught signal 2
+Released audio card Audio0
+audio_reservation_finish
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive():
+    Waiting for Data-Storage.nQPEJ
+[nsmd] ../src/nsmd.cpp:346 handle_client_process_death():
+    Client Data-Storage.nQPEJ terminated by server instruction.
+[nsmd] ../src/nsmd.cpp:346 handle_client_process_death():
+    Client JACKPatch.nLWNW terminated by server instruction.
+[nsmd] ../src/nsmd.cpp:346 handle_client_process_death():
+    Client qsynth.nLMTD terminated by server instruction.
+[nsmd] ../src/nsmd.cpp:346 handle_client_process_death():
+    Client qjackctl.nDVTC terminated by server instruction.
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1148 killed_clients_are_alive(): Waiting for seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1193 wait_for_killed_clients_to_die():
+    Killed clients are still alive
+[nsmd] ../src/nsmd.cpp:1201 wait_for_killed_clients_to_die():
+    SIGKILL to: seq66.nPSLM
+[nsmd] ../src/nsmd.cpp:1326 delete_lock_file():
+    Deleted lock file /run/user/1000/nsm/2025-01-2636116
+[nsmd] ../src/nsmd.cpp:1353 close_session():
+    Session /home/ahlstrom/.local/share/nsm/2025-01-26 was closed.
+[nsmd] ../src/nsmd.cpp:2614 handle_signal_clean_exit():
+    Caught SIGNAL 0. Stopping nsmd.
+[nsmd] ../src/nsmd.cpp:2620 handle_signal_clean_exit():
+    Deleted daemon file /run/user/1000/nsm/d/102222
+a

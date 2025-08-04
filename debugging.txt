@@ -1,0 +1,41 @@
+
+1650713 pts/1    S+     0:00 nsmd --load-session 2025-01-26
+1650714 pts/1    S+     0:00 python3 /usr/local/bin/nsm-data
+1650978 pts/10   Sl+    0:00 ./build/src/nsmctl/nsmctl-0.1 list
+1650980 pts/10   S+     0:00 nsmd --gui-url osc.udp://mlstrycoo:14280/ list
+1652400 pts/3    S+     0:00 grep nsm
+
+master % ./build/src/nsmctl/nsmctl-0.1 list
+[nsmctl] Creating OSC server
+[nsmctl] OSC URL: osc.udp://mlstrycoo:14280/
+[nsmctl] Forked to PID: 1650980
+[nsmctl] Announcing...
+[nsmctl] Refreshing session list
+[nsmctl] Action sent
+[nsmctl] Monitoring. Hit Ctrl-C to quit.
+[nsmctl] Started new nsmd daemon...
+[nsmctl] Passing argument: list
+[nsmd] ../src/nsmd.cpp:2692 main(): Going to connect to GUI at: osc.udp://mlstrycoo:14280/
+[nsmd] ../src/nsmd.cpp:2777 main(): Using /run/user/1000/nsm for lock-files.
+[nsmd] ../src/nsmd.cpp:2793 main(): Using /run/user/1000/nsm/d/1650980 as daemon file.
+[nsmd] ../src/nsmd.cpp:2843 main(): Session root is: /home/ahlstrom/.local/share/nsm
+[nsmd] ../src/Endpoint.cpp:205 init(): Creating OSC server
+NSM_URL=osc.udp://mlstrycoo:16154/
+[nsmd] ../src/nsmd.cpp:2863 main(): Created daemon file /run/user/1000/nsm/d/1650980
+[nsmd] ../src/nsmd.cpp:2513 announce_gui(): A GUI announced to us from the URL osc.udp://mlstrycoo:14280/
+[nsmd] ../src/nsmd.cpp:2536 announce_gui(): Informing GUI that no session is running by sending two empty strings
+[nsmd] ../src/nsmd.cpp:2565 announce_gui(): Registration with GUI complete
+[nsmctl] osc_generic(path:'/nsm/gui/server_announce', argc:1
+[nsmctl][nsmctl] osc_generic(path:'/nsm/gui/session/root', argc:1
+ osc_generic(): null pointer
+[nsmctl][nsmctl] Receiving OSC message /nsm/gui/server_announce, type s, and 1 arguments
+ osc_generic(): null pointer
+[nsmctl] Recv'd 60 bytes
+[nsmctl] osc_generic(path:'/nsm/gui/session/name', argc:2
+[nsmctl] osc_generic(): null pointer
+[nsmctl] Receiving OSC message /nsm/gui/session/name, type ss, and 2 arguments
+[nsmctl] Unnamed session
+
+/run/user/1000/nsm/d/1650713 : osc.udp://mlstrycoo:11150/
+/run/user/1000/nsm/d/1650980 : osc.udp://mlstrycoo:16154/
+

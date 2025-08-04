@@ -1,0 +1,52 @@
+nsmctl - Simple command-line controller for the 'New Session Manager'
+
+Usage:   nsmctl [ options | -h | --help ]
+
+Options:
+
+   -l, --lookup          Try to find a running nsmd and use it's URL.
+                         This is done if no NSM_URL is defined in the
+                         environment and no --url is provided.
+   -u, --url url         Connect to an nsmd running at a user-specified URL.
+                         Example: osc.udp://mycomputer.localdomain:38356/
+   -n, --nsmd-path path  Path to the nsmd application. Default is "nsmd".
+                         'build' loads the exe in ./build/src/nsmctl.
+   -p, --ping            Ping the server a few times.
+   -m, --monitor         Keep nsmctl running in order to monitor activity.
+   -q, --quiet           Turn off verbose output.
+   -s, --stop            At nsmctl exit, also tell nsmd 'servers' to stop.
+   -a, --action item     Run one action before exiting. See the list below.
+                         If it is a client, the format of item is
+                         'action@exe'; the executable name is required.
+                         Otherwise, it is just the action name alone.
+   -c, --clean           Remove the nsm run-time directory. Useful when files
+                         are left from aborted actions. But BE CAREFUL!
+   -i, --investigate     Enables extra code for trouble-shooting only.
+   --                    Everything after the -- is given to nsmd as server
+                         options. See nsmd --help. In particular, one can
+                         cut down the nsmd 'noise' using 'nsmctl -- --quiet.
+
+This program performs some of the functions of the non-session-manager
+user-interface (nsm-legacy-gui), but from the command line.
+
+Client/server actions:
+
+    abort (server)
+    add (server)
+    close (server)
+    duplicate (server)
+    guisave (client)
+    hide (client)
+    list (server)
+    new (server)
+    open (server)
+    quit (server)
+    remove (client)
+    resume (client)
+    save (server)
+    show (client)
+    stop (client)
+
+Each client action needs the name of an executable, such as 'qseq66'.
+The server actions 'open', 'duplicate', & 'new' need a session name.
+

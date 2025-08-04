@@ -1,0 +1,121 @@
+Use Case for the nsmctl Application
+Chris Ahlstrom
+2025-04-03 to 2025-04-10
+
+This short how-to summarizes various use cases for nsmctl.
+Eventually we will incorporate this information into a PDF manual.
+
+$ nsmctl
+
+    Simply starts up nsmd and enters monitor mode as if --monitor was
+    use. Shown by "ps":
+
+        nsmd --gui-url osc.udp://mlstrycoo:11171/
+
+$ nsmctl --action list --quiet
+
+    Shows the list of session available from nsdm.
+
+$ nsmctl --action list --quiet -- quiet
+
+    Shows the list of sessions available from nsdm with minimal
+    console output.
+
+$ nsmctl -- --load-session 2025-01-26
+
+    The same as running "nsmd --load-session 2025-01-26".
+
+====================================================================
+
+Client/server actions:
+
+    Nick-name   Type      osc::tag      Path
+
+    abort       [server]  srvabort      /nsm/server/abort
+
+        Tells the server to close the current session. It commands all clients
+        to quit (without saving), purges inactive clients, clears all clients,
+        deletes the lock-file for the session, and zeroes out the session path
+        and name.
+
+    add         [server]  srvadd        /nsm/server/add <clientexe>
+
+        If a session is open, this command tells nsmd to launch another client. 
+        with no client ID. A new client object is created, and a new client ID
+        is generated for it. The executable is forked as a child process. At
+        this point the client name is the base name of the executable.
+
+    close       [server]  srvclose      /nsm/server/close
+
+        Similar to "abort", except that the clients are commanded to save
+        before closing the session.
+
+    duplicate   [server]  srvduplicate  /nsm/server/duplicate <newsessionname>
+
+        If the session name exists and is valid, first the clients are all
+        commanded to save. The new session name is appended to the session
+        root, that directory is created, and a recursive copy is used to copy
+        the session files. If all goes well, the new session file is loaded.
+
+    guisave     [client]  guisave       /nsm/gui/client/save <clientid|name>
+
+        If the client is found, it is commanded to save. Either the client ID
+        or name can be used here (and in the rest of the "client" actions).
+        For example, if session.nsm includes the line "seq66:qseq66:nPSLM",
+        then the qseq66 executable can be specified as "seq66" or as "nPSLM".
+
+    hide        [client]  guihide       /nsm/gui/client/hide_optional_gui <clientid|name>
+
+        The hide path shown above is simply passed on to the desired client.
+
+    list        [server]  sessionlist   /nsm/session/list
+
+        The session root is parsed recursively for session.nsm files. The
+        parent directory of each are then sent separately as an
+        "/nsm/session/list" + "subdirectoryname" message. Then the messaging
+        is terminated by a "/reply" + "/nsm/session/list" + "" message.
+
+    new         [server]  srvnew        /nsm/server/new <newsessionname>
+
+        If no operations are pending, the session name does not exist, and
+        the new session name is valid (e.g. "a/b/c/d" but no "/../"
+        parent paths allowed), then the current session is saved, and a new
+        session is created with a new lock-file and session.nsm.
+
+    open        [server]  srvopen       /nsm/server/open <sessionname>
+
+        If the session exists and is not locked by another process, then
+        the named session is opened.
+
+    quit        [server]  srvquit       /nsm/server/quit
+
+        Closes the session (see "close" above) and then signals for a clean
+        exit.
+
+    remove      [client]  guiremove     /nsm/gui/client/remove <clientid|name>
+
+        If the client is found, its PID is 0, and it is not active, then
+        the "/nsm/gui/client/status" + ID + status is sent. The client is
+        removed and deleted.
+
+    resume      [client]  guiresume     /nsm/gui/client/resume <clientid|name>
+
+        If the client is found, its PID is 0, and it is not active, then
+        it is re-launched.
+
+    save        [server]  srvsave       /nsm/server/save
+
+        If a session is open, then all clients are commanded to save.
+
+    show        [client]  guishow       /nsm/gui/client/show_optional_gui <clientid|name>
+
+        The show path shown above is simply passed on to the desired client.
+
+    stop        [client]  guistop       /nsm/gui/client/stop <clientid|name>
+
+        If the client is found, then it is commanded to stop.
+
+New ones? Can we check if the client is dirty/clean, hidden/shown, get the
+client label, broadcast a message?
+
+# vim: sw=4 ts=4 wm=8 et ft=sh

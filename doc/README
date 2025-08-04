@@ -1,0 +1,8 @@
+Documentation Directory for the nsm66d application
+Chris Ahlstrom
+2025-02-03 to 2025-02-03
+
+This directory is where all documentation products specific to this
+library will reside.  See build/README for more information.
+
+# vim: sw=4 ts=4 wm=8 et ft=sh

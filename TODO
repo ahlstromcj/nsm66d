@@ -1,0 +1,33 @@
+TODOs for the Nsm66d application and Nsm66 library
+Chris Ahlstrom
+2025-01-29 to 2025-04-15
+
+This file lists only the high-priority features and fixtures we need
+to do for Nsm66d.
+
+Features:
+
+    -   Add a "--restart name" to send stop and resume actions with
+        a delay (2 seconds) in between.
+    -   Consider a vector<osc::tag> to perform multiple actions.
+
+Tests:
+
+    -   nsmd66 is not showing the "Got announce" messages.
+    -   Run nsmctl with --nsmd-path build in one terminal window, and
+        nsmctl --lookup in another under the debugger to see what is going
+        wrong.
+    -   How to keep Seq66 up-to-date when ports are added back in a
+        session.
+    -   Seq66 maybe be delaying responding/announcing to NSM.
+    -   When creating a session, make sure playlist is copied if active.
+    -   Do not error on missing input bus "ALSA Announce".
+    -   See the Recording items below (*).
+    -   The selection box vertical snap is too large; also needs
+        to be more accurate/precise.
+    -   Make the NSM start-up prompt time configurable or dependent on
+        the number of words.
+    -   Everytime Edit / Preferences is opened/closed, "[seq66] NSM URL..."
+        is written to the console.
+
+# vim: sw=4 ts=4 wm=8 et ft=sh

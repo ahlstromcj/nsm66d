@@ -1,0 +1,43 @@
+#----------------------------------------------------------------------------
+#
+# Nsm66 Library Wrapper
+# Chris Ahlstrom
+# 2025-01-28 to 2025-03-23
+#
+#   Nsm66 wrapper for GitHub repository
+#
+#   This is the ultimate source:
+#
+#       GitHub:
+#
+#           url = https://github.com/ahlstromcj/nsm66.git
+#
+#       On local server:
+#
+#           url = file:///srv/git/nsm66.git/
+#
+#       On local laptop:
+#
+#           url = ssh://mlstrycoo/srv/git/nsm66.git
+#
+#   Unfortunately there seems to be no way to try each until
+#   one works.
+#
+#----------------------------------------------------------------------------
+
+[wrap-git]
+
+url = file:///srv/git/nsm66.git/
+# url = ssh://mlstrycoo/srv/git/nsm66.git
+revision = head
+depth = 1
+
+[provide]
+
+#----------------------------------------------------------------------------
+# This dependency is declared in nsm66/meson.build.
+#----------------------------------------------------------------------------
+
+libnsm66_library = libnsm66_library_dep
+
+# vim: ft=dosini

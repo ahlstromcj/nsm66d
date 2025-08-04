@@ -1,0 +1,21 @@
+Realistic Jackpatch File Sample
+Chris Ahlstrom
+2025-02-16 to 2025-02-16
+
+This is a laundered version of a jackpatch file. Spacing added for readability. View this in a wide window.
+
+Note that a2jmidi was running when this snapshot was taken.
+
+a2j:Launchpad Mini (capture): Launchpad Mini MIDI 1                     |> seq66.nPSLM:a2j:Launchpad Mini (capture): Launchpad Mini MIDI 1
+a2j:MPK mini Play mk3 (capture): MPK mini Play mk3 MIDI 1               |> seq66.nPSLM:a2j:MPK mini Play mk3 (capture): MPK mini Play mk3 MIDI 1
+a2j:Midi Through (capture): Midi Through Port-0                         |> seq66.nPSLM:a2j:Midi Through (capture): Midi Through Port-0
+a2j:Q25 (capture): Q25 MIDI 1                                           |> seq66.nPSLM:a2j:Q25 (capture): Q25 MIDI 1
+a2j:nanoKEY2 (capture): nanoKEY2 nanoKEY2 _ CTRL                        |> seq66.nPSLM:a2j:nanoKEY2 (capture): nanoKEY2 nanoKEY2 _ CTRL
+seq66.nPSLM:a2j:Launchpad Mini (playback): Launchpad Mini MIDI 1        |> a2j:Launchpad Mini (playback): Launchpad Mini MIDI 1
+seq66.nPSLM:a2j:MPK mini Play mk3 (playback): MPK mini Play mk3 MIDI 1  |> a2j:MPK mini Play mk3 (playback): MPK mini Play mk3 MIDI 1
+seq66.nPSLM:a2j:Midi Through (playback): Midi Through Port-0            |> a2j:Midi Through (playback): Midi Through Port-0
+seq66.nPSLM:a2j:Q25 (playback): Q25 MIDI 1                              |> a2j:Q25 (playback): Q25 MIDI 1
+seq66.nPSLM:a2j:nanoKEY2 (playback): nanoKEY2 nanoKEY2 _ CTRL           |> a2j:nanoKEY2 (playback): nanoKEY2 nanoKEY2 _ CTRL
+seq66.nPSLM:fluidsynth-midi:midi_00                                     |> fluidsynth-midi:midi_00
+
+# vim: sw=4 ts=4 wm=8 et ft=sh

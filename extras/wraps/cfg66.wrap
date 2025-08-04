@@ -1,0 +1,25 @@
+#----------------------------------------------------------------------------
+#
+# Cfg66 Library Wrapper
+# Chris Ahlstrom
+# 2024-04-15 to 2024-04-26
+#
+#   Cfg66 wrapper for GitHub repository
+#
+#----------------------------------------------------------------------------
+
+[wrap-git]
+
+url = https://github.com/ahlstromcj/cfg66.git
+revision = head
+depth = 1
+
+[provide]
+
+#----------------------------------------------------------------------------
+# This dependency is declared in cfg66/meson.build.
+#----------------------------------------------------------------------------
+
+libcfg66_library = libcfg66_library_dep
+
+# vim: ft=dosini
