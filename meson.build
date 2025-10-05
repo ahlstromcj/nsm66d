@@ -6,7 +6,7 @@
 # \library     nsm66d
 # \author      Chris Ahlstrom
 # \date        2025-01-29
-# \updates     2025-03-25
+# \updates     2025-10-05
 # \license     $XPC_SUITE_GPL_LICENSE$
 #
 #  This file is part of the "nsm66" library. It was part of the libs66
@@ -236,20 +236,24 @@ cdata.set('lo_h', cc.has_header('lo/lo.h'))
 
 if nsm66d_use_potext
 
+   libpotext_dep = subproject('libpotext').get_variable('libpotext_dep')
    libpotext_library_dep = dependency(
       'libpotext', fallback : [ 'libpotext', 'libpotext_dep' ]
       )
 
 endif
 
+liblib66_dep = subproject('liblib66').get_variable('liblib66_dep')
 liblib66_library_dep = dependency(
    'liblib66', fallback : [ 'liblib66', 'liblib66_dep' ]
    )
 
+libcfg66_dep = subproject('libcfg66').get_variable('libcfg66_dep')
 libcfg66_library_dep = dependency(
    'libcfg66', fallback : [ 'libcfg66', 'libcfg66_dep' ]
    )
 
+libnsm66_dep = subproject('libnsm66').get_variable('libnsm66_dep')
 libnsm66_library_dep = dependency(
    'libnsm66', fallback : [ 'libnsm66', 'libnsm66_dep' ]
    )

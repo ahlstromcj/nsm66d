@@ -2,7 +2,7 @@
 #
 # Nsm66 Library Wrapper
 # Chris Ahlstrom
-# 2025-01-28 to 2025-03-23
+# 2025-01-28 to 2025-10-05
 #
 #   Nsm66 wrapper for GitHub repository
 #
@@ -23,13 +23,17 @@
 #   Unfortunately there seems to be no way to try each until
 #   one works.
 #
+# Warnings:
+#
+#   -   The main branch is not called 'master'; it is called 'main'.
+#   -   There is no 'wip' branch in the nsm66 GitHub project, yet.
+#
 #----------------------------------------------------------------------------
 
 [wrap-git]
 
-url = file:///srv/git/nsm66.git/
-# url = ssh://mlstrycoo/srv/git/nsm66.git
-revision = head
+url = https://github.com/ahlstromcj/nsm66.git
+revision = main
 depth = 1
 
 [provide]
