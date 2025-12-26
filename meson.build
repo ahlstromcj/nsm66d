@@ -6,7 +6,7 @@
 # \library     nsm66d
 # \author      Chris Ahlstrom
 # \date        2025-01-29
-# \updates     2025-10-05
+# \updates     2025-12-26
 # \license     $XPC_SUITE_GPL_LICENSE$
 #
 #  This file is part of the "nsm66" library. It was part of the libs66
@@ -220,8 +220,8 @@ endif
 cc = meson.get_compiler('cpp')
 cdata = configuration_data()
 
-cdata.set('limits_h', cc.has_header('limits.h'))
-cdata.set('lo_h', cc.has_header('lo/lo.h'))
+cdata.set10('limits_h', cc.has_header('limits.h'))
+cdata.set10('lo_h', cc.has_header('lo/lo.h'))
 
 #-----------------------------------------------------------------------------
 # Potential sub-projects

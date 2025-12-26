@@ -28,7 +28,7 @@
  * \library       nsm66
  * \author        Chris Ahlstrom
  * \date          2025-01-29
- * \updates       2025-01-29
+ * \updates       2025-12-26
  * \license       GNU GPL v2 or above
  *
  *  This file is used mainly for system files and specific build options.  The
@@ -43,23 +43,13 @@
  *  The proper way to test the macro is:
  *
  *      #if RTL66_HAVE_SEMAPHORE_H
- *
- *  We had an error on Arch Linux with "True" apparently not being detected as
- *  a boolean, so we add setting up True/False below. We should perhaps
- *  update this file to better match the descriptions at the URL above.
  */
 
-#if ! defined True
-#define True    1
-#endif
-
-#if ! defined False
-#define False   0
-#endif
-
+#if ! defined HAVE_LIMITS_H
 #define NSM66_HAVE_LIMITS_H           @limits_h@
 #define NSM66_HAVE_LINUX_LIMITS_H     @limits_h@
 #define NSM66_HAVE_LO_H               @lo_h@
+#endif
 
 #endif          // NSM66_CONFIG_H
 
