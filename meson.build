@@ -6,7 +6,7 @@
 # \library     nsm66d
 # \author      Chris Ahlstrom
 # \date        2025-01-29
-# \updates     2025-12-26
+# \updates     2026-02-26
 # \license     $XPC_SUITE_GPL_LICENSE$
 #
 #  This file is part of the "nsm66" library. It was part of the libs66
@@ -33,7 +33,7 @@ project('nsm66d',
    license : 'GPLv3',
    meson_version : '>=1.1.0',
    default_options : [
-      'c_std=c11', 'cpp_std=c++14', 'warning_level=3',
+      'c_std=c11', 'cpp_std=c++17', 'warning_level=3',
       'default_library=both'
       ]
    )
@@ -62,7 +62,7 @@ endif
 nsm66d_pkg_description = 'Refactors the nmsd NSM daemon modules.'
 nsm66d_pkg_version = meson.project_version()
 nsm66d_api_version = '0.1'
-nsm66d_info_date = '2025-03-20'
+nsm66d_info_date = '2026-02-26'
 nsm66d_info_build_type = get_option('buildtype')
 nsm66d_info_build_root = meson.project_build_root()
 nsm66d_info_lib_type = get_option('default_library')

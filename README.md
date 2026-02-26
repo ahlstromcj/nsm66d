@@ -1,4 +1,4 @@
-# README for Applications Nsm66d 0.1 2025-03-20
+# README for Applications Nsm66d 0.1 2026-02-26
 
 __Nsm66d__ is a reimplemation of the Non/New Session Manager applications
 __nsmd__, __jackpatch__, and __nsmproxy__. 
@@ -40,7 +40,7 @@ The "nsm66" directory holds session-management  code.
 ##  Application Features
 
     *   Can be built using GNU C++ or Clang C++.
-    *   Basic dependencies: Meson 1.1 and above; C++14 and above.
+    *   Basic dependencies: Meson 1.1 and above; C++17 and above.
     *   The build system is Meson, and sample wrap files are provided
         for using Nsm66 as a C++ subproject.
     *   PDF documentation built from LaTeX.
@@ -49,7 +49,7 @@ The "nsm66" directory holds session-management  code.
 
     *   The code is a most hard-core C++, with advanced language features
         used as much as possible.
-    *   C++14 and aboveis required for some of its features.
+    *   C++17 and above is required for some of its features.
     *   The GNU and Clang C++ compilers are supported.
     *   Broken into modules for easier maintenance.
     *   Support provided by the following "66" library projects:
